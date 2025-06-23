@@ -15,7 +15,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        scene = new Scene(loadFXML("Login"));
+
+        String cssPath = "/br/com/saulo/phadadb/css/login-style.css";
+        scene.getStylesheets().add(getClass().getResource(cssPath).toExternalForm());
+
         stage.setScene(scene);
         stage.show();
     }
@@ -24,10 +28,13 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
+private static Parent loadFXML(String fxml) throws IOException {
+    String resourcePath = "/br/com/saulo/phadadb/view/" + fxml + ".fxml";
+    
+    FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(resourcePath));
+    
+    return fxmlLoader.load();
+}
 
     public static void main(String[] args) {
         launch();
