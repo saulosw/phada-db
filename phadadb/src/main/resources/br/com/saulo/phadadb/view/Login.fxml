@@ -63,7 +63,7 @@
                <Insets top="35.0"/>
             </VBox.margin>
             <Label text="Don't have an account?" styleClass="signup-text"/>
-            <Hyperlink fx:id="signUpLink" text="Sign up" styleClass="signup-link" onAction="#handleSignUp"/>
+            <Hyperlink fx:id="signUpLink" text="Sign up" styleClass="signup-link" onAction="#navigateToRegister"/>
          </HBox>
          
       </VBox>

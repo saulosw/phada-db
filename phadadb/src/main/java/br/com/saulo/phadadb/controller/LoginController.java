@@ -1,8 +1,10 @@
 package br.com.saulo.phadadb.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import br.com.saulo.phadadb.App;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
@@ -18,7 +20,7 @@ import javafx.util.Duration;
 public class LoginController implements Initializable {
 
     @FXML
-    private ImageView leftImage;
+    private ImageView loginLeftImage;
     
     @FXML
     private TextField emailField;
@@ -47,7 +49,7 @@ public class LoginController implements Initializable {
     
     private void loadSideImage() {
         try {
-            leftImage.setStyle("-fx-background-color: linear-gradient(to bottom right, #1e1e2e, #2d1b69);");
+            loginLeftImage.setStyle("-fx-background-color: linear-gradient(to bottom right, #1e1e2e, #2d1b69);");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -90,8 +92,16 @@ public class LoginController implements Initializable {
         System.out.println("Forgot password clicked");
     }
     
+    /**
+     * NAVEGA para a tela de registro quando o link "Sign up" é clicado.
+     */
     @FXML
-    private void handleSignUp() {
-        System.out.println("Sign up clicked");
+    private void navigateToRegister() {
+        try {
+            App.setRoot("Register");
+        } catch (IOException e) {
+            System.err.println("Error loading Register view: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
