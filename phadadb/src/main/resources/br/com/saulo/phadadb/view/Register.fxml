@@ -62,7 +62,6 @@
              <CheckBox fx:id="termsCheckbox" text="I agree to the terms and privacy policy" styleClass="checkbox"/>
          </HBox>
          
-         <!-- ATUALIZADO onAction -->
          <Button fx:id="signUpButton" text="Create Account" styleClass="register-button" onAction="#processRegistration" maxWidth="Infinity">
             <VBox.margin>
                <Insets top="20.0" />

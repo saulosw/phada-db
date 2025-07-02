@@ -3,6 +3,11 @@ module br.com.saulo.phadadb {
     requires javafx.fxml;
     requires javafx.graphics;
 
+    requires java.sql;
+    requires com.zaxxer.hikari;
+    
+    requires bcrypt; 
+
     opens br.com.saulo.phadadb to javafx.fxml, javafx.graphics;
     opens br.com.saulo.phadadb.controller to javafx.fxml;
 
