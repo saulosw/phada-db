@@ -51,17 +51,8 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        loadSideImage();
         addEntryAnimations();
         addHoverEffects();
-    }
-
-    private void loadSideImage() {
-        try {
-            loginLeftImage.setStyle("-fx-background-color: linear-gradient(to bottom right, #1e1e2e, #2d1b69);");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private void addEntryAnimations() {
