@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class App extends Application {
@@ -24,6 +25,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        Font.loadFont(getClass().getResourceAsStream("/br/com/saulo/phadadb/fonts/Inter_24pt-Regular.ttf"), 10);
+        Font.loadFont(getClass().getResourceAsStream("/br/com/saulo/phadadb/fonts/Inter_24pt-Bold.ttf"), 10);
+
         scene = new Scene(new Pane(), 1400, 900);
         stage.setScene(scene);
         setRoot("Login");

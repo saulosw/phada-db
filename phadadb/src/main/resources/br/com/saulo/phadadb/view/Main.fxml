@@ -1,10 +1,223 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saulo.phadadb.controller.MainController">
-   <children>
-      <Label layoutX="250.0" layoutY="192.0" text="Login com Sucesso! Essa é a tela de main!" />
-   </children>
-</AnchorPane>
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saulo.phadadb.controller.MainController">
+   
+   <left>
+      <VBox styleClass="sidebar" spacing="0">
+         
+         <VBox styleClass="sidebar-header" alignment="CENTER" spacing="12">
+            <padding>
+               <Insets top="30" right="20" bottom="30" left="20" />
+            </padding>
+            <StackPane>
+               <ImageView fitHeight="50" fitWidth="50" preserveRatio="true">
+                  <image>
+                     <Image url="@../images/phada-icon.png" />
+                  </image>
+                  <effect>
+                     <DropShadow radius="15" spread="0.1">
+                        <color>
+                           <Color red="0.545" green="0.361" blue="0.965" opacity="0.3" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+               </ImageView>
+            </StackPane>
+            <Label text="PhadaDB" styleClass="brand-name" />
+         </VBox>
+         
+         <VBox styleClass="nav-section" spacing="8">
+            <padding>
+                <Insets top="0" right="15" bottom="20" left="15" />
+            </padding>
+            
+            <Label text="MENU" styleClass="section-label" />
+            
+            <Button fx:id="btnChatHistory" styleClass="nav-button" maxWidth="Infinity" alignment="CENTER_LEFT">
+               <graphic>
+                  <HBox spacing="12" alignment="CENTER_LEFT">
+                     <FontAwesomeIconView glyphName="COMMENTS" styleClass="nav-icon" size="1.3em"/>
+                     <Label text="Chat History" styleClass="nav-text" />
+                  </HBox>
+               </graphic>
+            </Button>
+            
+            <Button fx:id="btnGeneratedFiles" styleClass="nav-button" maxWidth="Infinity" alignment="CENTER_LEFT">
+               <graphic>
+                  <HBox spacing="12" alignment="CENTER_LEFT">
+                     <FontAwesomeIconView glyphName="FILE_TEXT" styleClass="nav-icon" size="1.3em"/>
+                     <Label text="Generated Files" styleClass="nav-text" />
+                  </HBox>
+               </graphic>
+            </Button>
+            
+            <Button fx:id="btnDatabases" styleClass="nav-button" maxWidth="Infinity" alignment="CENTER_LEFT">
+               <graphic>
+                  <HBox spacing="12" alignment="CENTER_LEFT">
+                     <FontAwesomeIconView glyphName="DATABASE" styleClass="nav-icon" size="1.3em"/>
+                     <Label text="Databases" styleClass="nav-text" />
+                  </HBox>
+               </graphic>
+            </Button>
+         </VBox>
+
+         <Region VBox.vgrow="ALWAYS" />
+         
+         <VBox styleClass="nav-section" spacing="8">
+             <padding>
+                <Insets top="20" right="15" bottom="20" left="15" />
+            </padding>
+            <Button fx:id="btnSettings" styleClass="nav-button" maxWidth="Infinity" alignment="CENTER_LEFT">
+               <graphic>
+                  <HBox spacing="12" alignment="CENTER_LEFT">
+                     <FontAwesomeIconView glyphName="COG" styleClass="nav-icon" size="1.3em"/>
+                     <Label text="Settings" styleClass="nav-text" />
+                  </HBox>
+               </graphic>
+            </Button>
+         </VBox>
+      </VBox>
+   </left>
+   
+   <center>
+      <StackPane>
+         <VBox styleClass="chat-container" spacing="0">
+            
+            <HBox styleClass="chat-header" alignment="CENTER_LEFT" spacing="20">
+               <padding>
+                  <Insets top="0" right="30" bottom="0" left="30" />
+               </padding>
+               
+               <VBox alignment="CENTER_LEFT" spacing="4" HBox.hgrow="ALWAYS">
+                  <Label text="PhadaDB Assistant" styleClass="chat-title" />
+                  <HBox alignment="CENTER_LEFT" spacing="8">
+                     <StackPane>
+                        <FontAwesomeIconView glyphName="CIRCLE" size="0.5em" styleClass="status-indicator-active" />
+                     </StackPane>
+                     <Label fx:id="lblConnectionStatus" text="Ready to assist" styleClass="chat-subtitle" />
+                  </HBox>
+               </VBox>
+               
+               <ComboBox fx:id="cbDatabase" styleClass="database-selector" promptText="Select database" minWidth="200" />
+               
+               <Button fx:id="btnMapDatabase" styleClass="primary-button">
+                  <graphic>
+                     <HBox spacing="8" alignment="CENTER">
+                        <FontAwesomeIconView glyphName="MAGIC" size="1.1em" fill="white" />
+                        <Label text="Map Database" styleClass="button-text" />
+                     </HBox>
+                  </graphic>
+               </Button>
+            </HBox>
+            
+            <ScrollPane fitToWidth="true" fitToHeight="true" VBox.vgrow="ALWAYS" styleClass="chat-scroll">
+               <StackPane fx:id="centralContentPane" styleClass="messages-area">
+                  <VBox alignment="CENTER" spacing="40" maxWidth="450">
+                     <StackPane>
+                        <ImageView fx:id="butterflyImage" fitHeight="100" fitWidth="100" preserveRatio="true" opacity="0.9">
+                           <image>
+                              <Image url="@../images/phada-icon.png" />
+                           </image>
+                           <effect>
+                              <DropShadow radius="25" spread="0.15">
+                                 <color>
+                                    <Color red="0.545" green="0.361" blue="0.965" opacity="0.2" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </ImageView>
+                     </StackPane>
+                     
+                     <VBox alignment="CENTER" spacing="8">
+                        <Label text="Welcome back!" styleClass="welcome-primary" />
+                        <Label text="How can I help you with your data today?" styleClass="welcome-secondary" />
+                     </VBox>
+                     
+                     <VBox alignment="CENTER" spacing="12" styleClass="suggestions-grid">
+                        <Label text="Popular queries" styleClass="suggestions-title" />
+                        <VBox spacing="8">
+                           <Button fx:id="btnQuickQuery1" styleClass="suggestion-card" contentDisplay="LEFT">
+                              <graphic>
+                                 <FontAwesomeIconView glyphName="CHART_BAR" styleClass="suggestion-icon" size="1.2em"/>
+                              </graphic>
+                              <text>Generate sales report</text>
+                           </Button>
+                           <Button fx:id="btnQuickQuery2" styleClass="suggestion-card" contentDisplay="LEFT">
+                              <graphic>
+                                 <FontAwesomeIconView glyphName="FILE_EXCEL_ALT" styleClass="suggestion-icon" size="1.2em"/>
+                              </graphic>
+                              <text>Export data to Excel</text>
+                           </Button>
+                           <Button fx:id="btnQuickQuery3" styleClass="suggestion-card" contentDisplay="LEFT">
+                              <graphic>
+                                 <FontAwesomeIconView glyphName="TACHOMETER" styleClass="suggestion-icon" size="1.2em"/>
+                              </graphic>
+                              <text>Analyze performance metrics</text>
+                           </Button>
+                        </VBox>
+                     </VBox>
+                  </VBox>
+               </StackPane>
+            </ScrollPane>
+            
+            <VBox styleClass="input-section" spacing="12" alignment="CENTER">
+               <padding>
+                  <Insets top="20" right="30" bottom="20" left="30" />
+               </padding>
+               
+               <HBox styleClass="input-container" alignment="CENTER" spacing="0">
+                  <Button fx:id="btnAttach" styleClass="input-action-button">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="PLUS_CIRCLE" size="1.3em" styleClass="input-icon"/>
+                     </graphic>
+                  </Button>
+                  
+                  <TextField fx:id="tfChatInput" styleClass="chat-input" promptText="Ask me anything about your data..." HBox.hgrow="ALWAYS" />
+                  
+                  <Button fx:id="btnSend" styleClass="send-button">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="PAPER_PLANE" size="1.2em" styleClass="send-icon"/>
+                     </graphic>
+                  </Button>
+               </HBox>
+               
+               <HBox alignment="CENTER" spacing="8">
+                  <FontAwesomeIconView glyphName="INFO_CIRCLE" size="0.9em" styleClass="hint-icon"/>
+                  <Label text="Press Enter to send, Shift+Enter for new line" styleClass="input-hint" />
+               </HBox>
+            </VBox>
+            
+         </VBox>
+         
+         <HBox styleClass="database-status-container" StackPane.alignment="BOTTOM_RIGHT" mouseTransparent="false" pickOnBounds="false">
+            <padding>
+               <Insets top="0" right="20" bottom="20" left="0" />
+            </padding>
+            <HBox alignment="CENTER" spacing="6" styleClass="database-status-badge">
+               <FontAwesomeIconView fx:id="dbStatusIcon" glyphName="CIRCLE" size="0.7em" styleClass="status-indicator-disconnected" />
+               <Label fx:id="dbStatusLabel" text="No database connected" styleClass="status-text-small" />
+            </HBox>
+         </HBox>
+         
+      </StackPane>
+   </center>
+
+</BorderPane>
